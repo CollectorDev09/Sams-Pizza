@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://br4q2m8x4c7yh"]
+
+[ext_resource type="Script" uid="uid://hdbs3ox002nn" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=1615080614]
+script = ExtResource("1_ig7tw")
+
+[node name="Items" type="Label" parent="." unique_id=1461138221]
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 307.0
+offset_bottom = 385.0
+
+[node name="CheesePizzaButton" type="Button" parent="." unique_id=1771041734]
+offset_left = 608.0
+offset_top = 32.0
+offset_right = 773.0
+offset_bottom = 84.0
+text = "Add Cheese Pizza"
+
+[node name="PepperoniPizzaButton" type="Button" parent="." unique_id=202157933]
+offset_left = 608.0
+offset_top = 104.0
+offset_right = 774.0
+offset_bottom = 156.0
+text = "Add Pepperoni Pizza"
+
+[node name="SodaButton" type="Button" parent="." unique_id=166055828]
+offset_left = 608.0
+offset_top = 176.0
+offset_right = 774.0
+offset_bottom = 228.0
+text = "Add Soda"
+
+[node name="RemoveButton" type="Button" parent="." unique_id=1972082353]
+offset_left = 608.0
+offset_top = 464.0
+offset_right = 774.0
+offset_bottom = 516.0
+text = "Remove Item"
+
+[node name="TotalText" type="Label" parent="." unique_id=1669967727]
+offset_left = 16.0
+offset_top = 544.0
+offset_right = 103.0
+offset_bottom = 589.0
+theme_override_font_sizes/font_size = 32
+text = "Total:"
+
+[node name="FinishButton" type="Button" parent="." unique_id=1993917305]
+offset_left = 608.0
+offset_top = 528.0
+offset_right = 774.0
+offset_bottom = 580.0
+text = "Finish"
+
+[connection signal="pressed" from="CheesePizzaButton" to="." method="addCheese"]
+[connection signal="pressed" from="PepperoniPizzaButton" to="." method="addPepperoni"]
+[connection signal="pressed" from="SodaButton" to="." method="addSoda"]
+[connection signal="pressed" from="RemoveButton" to="." method="removeItem"]
+[connection signal="pressed" from="FinishButton" to="." method="finish"]

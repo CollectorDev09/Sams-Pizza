@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://br4q2m8x4c7yh"]
+
+[ext_resource type="Script" uid="uid://hdbs3ox002nn" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=1615080614]
+script = ExtResource("1_ig7tw")
+
+[node name="Items" type="Label" parent="." unique_id=1461138221]
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 307.0
+offset_bottom = 385.0
+
+[node name="CheesePizzaButton" type="Button" parent="." unique_id=1771041734]
+offset_left = 608.0
+offset_top = 32.0
+offset_right = 773.0
+offset_bottom = 84.0
+text = "Add Cheese Pizza"
+
+[node name="PepperoniPizzaButton" type="Button" parent="." unique_id=202157933]
+offset_left = 608.0
+offset_top = 104.0
+offset_right = 774.0
+offset_bottom = 156.0
+text = "Add Pepperoni Pizza"
+
+[node name="SodaButton" type="Button" parent="." unique_id=166055828]
+offset_left = 608.0
+offset_top = 176.0
+offset_right = 774.0
+offset_bottom = 228.0
+text = "Add Soda"
+
+[node name="RemoveButton" type="Button" parent="." unique_id=1972082353]
+offset_left = 608.0
+offset_top = 328.0
+offset_right = 774.0
+offset_bottom = 380.0
+text = "Remove Item"
+
+[connection signal="pressed" from="CheesePizzaButton" to="." method="addCheese"]
+[connection signal="pressed" from="PepperoniPizzaButton" to="." method="addPepperoni"]
+[connection signal="pressed" from="SodaButton" to="." method="addSoda"]

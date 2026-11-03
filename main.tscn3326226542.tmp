@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://br4q2m8x4c7yh"]
+
+[ext_resource type="Script" uid="uid://hdbs3ox002nn" path="res://main.gd" id="1_ig7tw"]
+
+[node name="Main" type="Node2D" unique_id=1615080614]
+script = ExtResource("1_ig7tw")
+
+[node name="Items" type="Label" parent="." unique_id=1461138221]
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 307.0
+offset_bottom = 385.0
