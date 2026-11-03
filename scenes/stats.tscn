@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bbd61t3we7rmc"]
+
+[ext_resource type="Script" uid="uid://drl42y63c2v8f" path="res://scripts/stats/stats.gd" id="1_3f7q0"]
+
+[node name="Stats" type="Node2D" unique_id=1006589085]
+script = ExtResource("1_3f7q0")
+
+[node name="Stats" type="Label" parent="." unique_id=2136799839]
+offset_left = 256.0
+offset_top = 8.0
+offset_right = 544.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 32
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=1114787057]
+offset_left = 160.0
+offset_top = 200.0
+offset_right = 640.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 24
+text = "Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccuracyLabel" type="Label" parent="." unique_id=648462821]
+offset_left = 160.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 24
+text = "Accuracy:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=192770944]
+offset_left = 8.0
+offset_top = 560.0
+offset_right = 80.0
+offset_bottom = 591.0
+text = "Back"
+
+[connection signal="pressed" from="BackButton" to="." method="_goBack"]

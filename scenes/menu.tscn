@@ -1,21 +1,49 @@
 [gd_scene format=3 uid="uid://ccm061yuoyhrw"]
 
 [ext_resource type="Script" uid="uid://c3prm447ff2h3" path="res://scripts/menu/playButton.gd" id="1_yqeox"]
+[ext_resource type="Script" uid="uid://byvan63mdsld0" path="res://scripts/menu/statsButton.gd" id="2_vjb58"]
 
 [node name="Menu" type="Node2D" unique_id=1771713687]
 
-[node name="Button" type="Button" parent="." unique_id=73038390]
+[node name="Play" type="Button" parent="." unique_id=73038390]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 352.0
 offset_top = 304.0
 offset_right = 480.0
-offset_bottom = 335.0
+offset_bottom = 352.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
 text = "Play"
 script = ExtResource("1_yqeox")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[node name="Stats" type="Button" parent="." unique_id=913676124]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = 368.0
+offset_right = 480.0
+offset_bottom = 416.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "Stats"
+script = ExtResource("2_vjb58")
+
+[node name="Label" type="Label" parent="." unique_id=2122272813]
+offset_left = 128.0
+offset_top = 88.0
+offset_right = 672.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 52
+text = "A Day at Sam's Pizza"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
+[connection signal="pressed" from="Stats" to="Stats" method="_on_pressed"]

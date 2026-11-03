@@ -34,6 +34,9 @@ var correctOrders = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SaveLoad._load()
+	points = SaveLoad.SaveFileData.points
+	
 	statsHUD.hide()
 	newCustomer()
 
@@ -142,4 +145,8 @@ func finish() -> void:
 		newCustomer()
 	else:
 		print("Good Job! You're done!")
+		SaveLoad.SaveFileData.points = points
+		SaveLoad.SaveFileData.accArray.append(Stats.orderAccuracy)
+		SaveLoad.resetAccuracy()
+		SaveLoad._save()
 		statsHUD.show()
