@@ -1,54 +1,66 @@
 [gd_scene format=3 uid="uid://bbd61t3we7rmc"]
 
 [ext_resource type="Script" uid="uid://drl42y63c2v8f" path="res://scripts/stats/stats.gd" id="1_3f7q0"]
+[ext_resource type="Texture2D" uid="uid://bqjjjoblcrm2i" path="res://images/game/pizzaShop/Sky_night.png" id="2_lfxck"]
+[ext_resource type="Texture2D" uid="uid://cwl4pxtidm15p" path="res://images/game/pizzaShop/Place.png" id="3_lid6g"]
+[ext_resource type="Texture2D" uid="uid://cobsq743bfav1" path="res://images/game/pizzaShop/Desk.png" id="4_8yy15"]
+[ext_resource type="Texture2D" uid="uid://13bm2ap7wcj3" path="res://images/stats/StatPaper.png" id="5_lid6g"]
 
 [node name="Stats" type="Node2D" unique_id=1006589085]
 script = ExtResource("1_3f7q0")
 
-[node name="Stats" type="Label" parent="." unique_id=2136799839]
-offset_left = 256.0
-offset_top = 8.0
-offset_right = 544.0
-offset_bottom = 96.0
-theme_override_font_sizes/font_size = 32
-text = "Stats"
-horizontal_alignment = 1
+[node name="BG" type="Sprite2D" parent="." unique_id=1198163837]
+texture = ExtResource("2_lfxck")
+centered = false
+
+[node name="Place" type="Sprite2D" parent="." unique_id=79033756]
+texture = ExtResource("3_lid6g")
+centered = false
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=1470816858]
+position = Vector2(0, 390)
+texture = ExtResource("4_8yy15")
+centered = false
+
+[node name="StatPaper" type="Sprite2D" parent="." unique_id=378071228]
+position = Vector2(424, 296)
+texture = ExtResource("5_lid6g")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=1114787057]
-offset_left = 160.0
-offset_top = 200.0
-offset_right = 640.0
-offset_bottom = 240.0
-theme_override_font_sizes/font_size = 24
+offset_left = 320.0
+offset_top = 256.0
+offset_right = 536.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "Score:"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AccuracyLabel" type="Label" parent="." unique_id=648462821]
-offset_left = 160.0
-offset_top = 256.0
-offset_right = 640.0
-offset_bottom = 296.0
-theme_override_font_sizes/font_size = 24
+offset_left = 304.0
+offset_top = 280.0
+offset_right = 536.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "Accuracy:"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OrdersLabel" type="Label" parent="." unique_id=1244735395]
-offset_left = 160.0
-offset_top = 312.0
-offset_right = 640.0
-offset_bottom = 352.0
-theme_override_font_sizes/font_size = 24
+offset_left = 296.0
+offset_top = 304.0
+offset_right = 544.0
+offset_bottom = 328.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "Total Orders:"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="." unique_id=192770944]
-offset_left = 8.0
-offset_top = 560.0
-offset_right = 80.0
-offset_bottom = 591.0
+offset_left = 328.0
+offset_top = 512.0
+offset_right = 504.0
+offset_bottom = 560.0
 text = "Back"
 
 [connection signal="pressed" from="BackButton" to="." method="_goBack"]

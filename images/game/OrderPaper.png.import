@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgshqgawvfym1"
-path="res://.godot/imported/Cheese.png-10b49bbab51940537ba5a167ac4b82a1.ctex"
+uid="uid://2fjrhmf8eshr"
+path="res://.godot/imported/OrderPaper.png-d547d57b0cf38cc710fdd283e1ba8121.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/Cheese.png"
-dest_files=["res://.godot/imported/Cheese.png-10b49bbab51940537ba5a167ac4b82a1.ctex"]
+source_file="res://images/game/OrderPaper.png"
+dest_files=["res://.godot/imported/OrderPaper.png-d547d57b0cf38cc710fdd283e1ba8121.ctex"]
 
 [params]
 

@@ -1,18 +1,34 @@
 [gd_scene format=3 uid="uid://ccm061yuoyhrw"]
 
+[ext_resource type="Texture2D" uid="uid://bqjjjoblcrm2i" path="res://images/game/pizzaShop/Sky_night.png" id="1_4ytvr"]
 [ext_resource type="Script" uid="uid://c3prm447ff2h3" path="res://scripts/menu/playButton.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://cwl4pxtidm15p" path="res://images/game/pizzaShop/Place.png" id="2_g3eks"]
 [ext_resource type="Script" uid="uid://byvan63mdsld0" path="res://scripts/menu/statsButton.gd" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://cobsq743bfav1" path="res://images/game/pizzaShop/Desk.png" id="3_v86rl"]
 
 [node name="Menu" type="Node2D" unique_id=1771713687]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1523876080]
+texture = ExtResource("1_4ytvr")
+centered = false
+
+[node name="Place" type="Sprite2D" parent="." unique_id=1235987820]
+texture = ExtResource("2_g3eks")
+centered = false
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=1906413111]
+position = Vector2(0, 390)
+texture = ExtResource("3_v86rl")
+centered = false
 
 [node name="Play" type="Button" parent="." unique_id=73038390]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 352.0
-offset_top = 304.0
-offset_right = 480.0
-offset_bottom = 352.0
+offset_left = 248.0
+offset_top = 432.0
+offset_right = 376.0
+offset_bottom = 480.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -24,10 +40,10 @@ script = ExtResource("1_yqeox")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 352.0
-offset_top = 368.0
-offset_right = 480.0
-offset_bottom = 416.0
+offset_left = 400.0
+offset_top = 432.0
+offset_right = 528.0
+offset_bottom = 480.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -35,11 +51,25 @@ theme_override_font_sizes/font_size = 24
 text = "Stats"
 script = ExtResource("2_vjb58")
 
+[node name="Version" type="Label" parent="." unique_id=25393234]
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 56.0
+offset_bottom = 596.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7058824)
+theme_override_font_sizes/font_size = 20
+text = "v1.0"
+
 [node name="Label" type="Label" parent="." unique_id=2122272813]
-offset_left = 128.0
-offset_top = 88.0
-offset_right = 672.0
-offset_bottom = 168.0
+offset_left = 120.0
+offset_top = 96.0
+offset_right = 664.0
+offset_bottom = 176.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4392157)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/font_size = 52
 text = "A Day at Sam's Pizza"
 horizontal_alignment = 1

@@ -4,17 +4,137 @@
 [ext_resource type="Script" uid="uid://dyiukkuljwp6j" path="res://scripts/stats.gd" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://cse2so7kcpbet" path="res://scripts/playAgain.gd" id="3_85g3d"]
 [ext_resource type="Script" uid="uid://dpgg36xgox5uj" path="res://scripts/GotoMainMenu.gd" id="3_choun"]
-[ext_resource type="Texture2D" uid="uid://cgshqgawvfym1" path="res://images/Cheese.png" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cgshqgawvfym1" path="res://images/game/items/Cheese.png" id="3_jyhfs"]
 [ext_resource type="StyleBox" uid="uid://dom7cclwgceme" path="res://styles/buttons/item.tres" id="3_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://mfn4hjbjoa8a" path="res://images/Pepperoni.png" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://mfn4hjbjoa8a" path="res://images/game/items/Pepperoni.png" id="4_tbgi4"]
 [ext_resource type="StyleBox" uid="uid://84amqjkgurww" path="res://styles/buttons/itemPressed.tres" id="4_tefeu"]
-[ext_resource type="Texture2D" uid="uid://ukj0n2lbjdxx" path="res://images/GoldSoda.png" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://btxa4nxsrh30y" path="res://images/game/characters/Macy.png" id="5_muem4"]
+[ext_resource type="Texture2D" uid="uid://cncr4xv1mqdwh" path="res://images/game/characters/Star.png" id="6_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://ukj0n2lbjdxx" path="res://images/game/items/GoldSoda.png" id="7_o6xl0"]
 [ext_resource type="StyleBox" uid="uid://dowuwtmrye1m5" path="res://styles/buttons/itemHover.tres" id="7_tipki"]
+[ext_resource type="Texture2D" uid="uid://gskilcafc1xy" path="res://images/game/ChatBubble.png" id="8_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://d08e7edv0nqt5" path="res://images/game/ChatItems.png" id="9_0ld40"]
+[ext_resource type="Texture2D" uid="uid://bqjjjoblcrm2i" path="res://images/game/pizzaShop/Sky_night.png" id="11_trceg"]
+[ext_resource type="Texture2D" uid="uid://cwl4pxtidm15p" path="res://images/game/pizzaShop/Place.png" id="12_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://cobsq743bfav1" path="res://images/game/pizzaShop/Desk.png" id="13_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://2fjrhmf8eshr" path="res://images/game/OrderPaper.png" id="14_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bya72yyly668f" path="res://images/game/characters/Jonathan.png" id="15_jkv2x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbj1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_jkv2x")
+}],
+"loop": true,
+"name": &"Jonathan",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_muem4")
+}],
+"loop": true,
+"name": &"Macy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dp3eg")
+}],
+"loop": true,
+"name": &"Star",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
+atlas = ExtResource("9_0ld40")
+region = Rect2(0, 55, 71, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
+atlas = ExtResource("9_0ld40")
+region = Rect2(0, 0, 71, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = ExtResource("9_0ld40")
+region = Rect2(71, 55, 71, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm3ni"]
+atlas = ExtResource("9_0ld40")
+region = Rect2(71, 0, 71, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6deb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqmmt")
+}],
+"loop": true,
+"name": &"Cheese",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc10j")
+}],
+"loop": true,
+"name": &"CheeseSoda",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jscy8")
+}],
+"loop": true,
+"name": &"Pepper",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm3ni")
+}],
+"loop": true,
+"name": &"PepperSoda",
+"speed": 5.0
+}]
 
 [node name="Main" type="Node2D" unique_id=1615080614]
 script = ExtResource("1_o5qli")
 
+[node name="BG" type="CanvasLayer" parent="." unique_id=1652939463]
+layer = -1
+
+[node name="BG" type="Sprite2D" parent="BG" unique_id=1346253311]
+texture = ExtResource("11_trceg")
+centered = false
+
+[node name="Place" type="Sprite2D" parent="BG" unique_id=741426854]
+texture = ExtResource("12_a8y0u")
+centered = false
+
+[node name="Character" type="AnimatedSprite2D" parent="BG" unique_id=412132536]
+position = Vector2(408, 240)
+sprite_frames = SubResource("SpriteFrames_jbj1t")
+animation = &"Jonathan"
+
+[node name="Desk" type="Sprite2D" parent="BG" unique_id=1800753090]
+position = Vector2(0, 390)
+texture = ExtResource("13_jkv2x")
+centered = false
+
+[node name="ChatBubble" type="Sprite2D" parent="BG" unique_id=254748596]
+position = Vector2(608, 184.00002)
+scale = Vector2(-1.321, 1.179)
+texture = ExtResource("8_dp3eg")
+
+[node name="ChatItem" type="AnimatedSprite2D" parent="BG" unique_id=131014526]
+position = Vector2(619.1875, 168.31252)
+scale = Vector2(1.6672534, 1.7340906)
+sprite_frames = SubResource("SpriteFrames_y6deb")
+animation = &"PepperSoda"
+
 [node name="StatsHUD" type="CanvasLayer" parent="." unique_id=828023848]
+visible = false
 script = ExtResource("2_0wfyh")
 
 [node name="BG" type="ColorRect" parent="StatsHUD" unique_id=876052792]
@@ -78,17 +198,11 @@ script = ExtResource("3_85g3d")
 [node name="MainHUD" type="CanvasLayer" parent="." unique_id=1070360870]
 layer = 0
 
-[node name="Items" type="Label" parent="MainHUD" unique_id=1461138221]
-offset_left = 52.0
-offset_top = 32.0
-offset_right = 307.0
-offset_bottom = 385.0
-
 [node name="CheesePizzaButton" type="Button" parent="MainHUD" unique_id=1771041734]
-offset_left = 640.0
-offset_top = 16.0
-offset_right = 744.0
-offset_bottom = 120.0
+offset_left = 280.0
+offset_top = 503.0
+offset_right = 384.0
+offset_bottom = 607.0
 theme_override_styles/normal = ExtResource("3_tbgi4")
 theme_override_styles/pressed = ExtResource("4_tefeu")
 theme_override_styles/hover = ExtResource("7_tipki")
@@ -96,10 +210,10 @@ icon = ExtResource("3_jyhfs")
 expand_icon = true
 
 [node name="PepperoniPizzaButton" type="Button" parent="MainHUD" unique_id=202157933]
-offset_left = 640.0
-offset_top = 136.0
-offset_right = 744.0
-offset_bottom = 240.0
+offset_left = 392.0
+offset_top = 503.0
+offset_right = 496.0
+offset_bottom = 607.0
 theme_override_styles/normal = ExtResource("3_tbgi4")
 theme_override_styles/pressed = ExtResource("4_tefeu")
 theme_override_styles/hover = ExtResource("7_tipki")
@@ -107,10 +221,10 @@ icon = ExtResource("4_tbgi4")
 expand_icon = true
 
 [node name="SodaButton" type="Button" parent="MainHUD" unique_id=166055828]
-offset_left = 640.0
-offset_top = 256.0
-offset_right = 744.0
-offset_bottom = 360.0
+offset_left = 504.0
+offset_top = 503.0
+offset_right = 608.0
+offset_bottom = 607.0
 theme_override_styles/normal = ExtResource("3_tbgi4")
 theme_override_styles/pressed = ExtResource("4_tefeu")
 theme_override_styles/hover = ExtResource("7_tipki")
@@ -118,33 +232,29 @@ icon = ExtResource("7_o6xl0")
 expand_icon = true
 
 [node name="RemoveButton" type="Button" parent="MainHUD" unique_id=1972082353]
-offset_left = 608.0
-offset_top = 464.0
-offset_right = 774.0
-offset_bottom = 516.0
+offset_left = 280.0
+offset_top = 432.0
+offset_right = 440.0
+offset_bottom = 484.0
 text = "Remove Item"
 
 [node name="CustomersText" type="Label" parent="MainHUD" unique_id=373459955]
 offset_left = 16.0
-offset_top = 498.0
-offset_right = 110.0
-offset_bottom = 543.0
+offset_top = 16.0
+offset_right = 296.0
+offset_bottom = 61.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.61960787)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 32
 text = "Customers:"
 
-[node name="TotalText" type="Label" parent="MainHUD" unique_id=1669967727]
-offset_left = 16.0
-offset_top = 544.0
-offset_right = 103.0
-offset_bottom = 589.0
-theme_override_font_sizes/font_size = 32
-text = "Total:"
-
 [node name="RequestText" type="Label" parent="MainHUD" unique_id=1570861763]
+visible = false
 offset_left = 240.0
-offset_top = 480.0
+offset_top = 88.0
 offset_right = 544.0
-offset_bottom = 578.0
+offset_bottom = 186.0
 theme_override_font_sizes/font_size = 24
 text = "Cusat"
 horizontal_alignment = 1
@@ -152,11 +262,31 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="FinishButton" type="Button" parent="MainHUD" unique_id=1993917305]
-offset_left = 608.0
-offset_top = 528.0
-offset_right = 774.0
-offset_bottom = 580.0
+offset_left = 456.0
+offset_top = 432.0
+offset_right = 608.0
+offset_bottom = 484.0
 text = "Finish"
+
+[node name="Paper" type="Sprite2D" parent="MainHUD" unique_id=1118842769]
+position = Vector2(159.5, 503.5)
+texture = ExtResource("14_a8y0u")
+
+[node name="Items" type="Label" parent="MainHUD" unique_id=1461138221]
+offset_left = 63.5
+offset_top = 439.5
+offset_right = 247.5
+offset_bottom = 543.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="TotalText" type="Label" parent="MainHUD" unique_id=1669967727]
+offset_left = 55.5
+offset_top = 559.5
+offset_right = 167.5
+offset_bottom = 591.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 23
+text = "Total:"
 
 [connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
 [connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]

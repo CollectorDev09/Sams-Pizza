@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ukj0n2lbjdxx"
-path="res://.godot/imported/GoldSoda.png-d249c0ca00451f74198696ae9010553f.ctex"
+uid="uid://cwl4pxtidm15p"
+path="res://.godot/imported/Place.png-9bddf6504359c0389fb6e3296778ade9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/GoldSoda.png"
-dest_files=["res://.godot/imported/GoldSoda.png-d249c0ca00451f74198696ae9010553f.ctex"]
+source_file="res://images/game/pizzaShop/Place.png"
+dest_files=["res://.godot/imported/Place.png-9bddf6504359c0389fb6e3296778ade9.ctex"]
 
 [params]
 

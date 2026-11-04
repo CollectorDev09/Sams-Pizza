@@ -6,6 +6,8 @@ extends Node2D
 @onready var customersText: Label = $MainHUD/CustomersText
 @onready var statsHUD: CanvasLayer = $StatsHUD
 @onready var accuracyText: Label = get_node("StatsHUD/AccuracyText")
+@onready var character: AnimatedSprite2D = $BG/Character
+@onready var chatItem: AnimatedSprite2D = $BG/ChatItem
 
 var total = 0.00
 var points:int = 0
@@ -41,7 +43,16 @@ func _ready() -> void:
 	newCustomer()
 	updateText()
 
+var lastAnim = ""
+
 func newCustomer():
+	var anims = ["Jonathan", "Macy", "Star"]
+	
+	while (character.animation.get_basename() == lastAnim):
+		character.play(anims[random.randi() % anims.size()])
+	
+	lastAnim = character.animation.get_basename()
+	print(lastAnim)
 	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
 	accuracyText.text = "Accuracy: %.2f%%" % Stats.orderAccuracy
 	print(accuracyText.text)
@@ -57,20 +68,30 @@ func newCustomer():
 	requestArray.append(keys[customerWants])
 	requestArray.pop_front()
 	print("\n")
+	
+	updateText()
 
 func updateText():
 	if (randomNum == 1 and not keys[customerWants] == "Soda"):
 		requestText.text = "Customer wants a %s and a Soda." % keys[customerWants]
+		if (keys[customerWants] == "Cheese Pizza"):
+			chatItem.play("CheeseSoda")
+		elif (keys[customerWants] == "Pepperoni Pizza"):
+			chatItem.play("PepperSoda")
 		requestArray.append("Soda")
 		# itemLabel.text = "%s\nSoda" % keys[customerWants]
 	else:
 		requestText.text = "Customer wants a %s" % keys[customerWants]
+		if (keys[customerWants] == "Cheese Pizza"):
+			chatItem.play("Cheese")
+		elif (keys[customerWants] == "Pepperoni Pizza"):
+			chatItem.play("Pepper")
 		# itemLabel.text = keys[customerWants]
 
 	total_text.text = "Total: $%.2f" % total
 	scoreText.text = "Score: %d" % points
 	
-	customersText.text = "Customers: %d" % customers
+	customersText.text = "Customers Left: %d" % customers
 	itemLabel.text = arrayItems(itemArray)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -101,7 +122,7 @@ func round_to_dec(num,digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
 
 func addItem(name:String):
-	if (itemArray.size() == 10): return
+	if (itemArray.size() == 3): return
 	
 	itemArray.append(name)
 	if itemArray[0] == "":
