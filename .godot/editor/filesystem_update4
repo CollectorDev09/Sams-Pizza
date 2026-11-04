@@ -1,0 +1,3 @@
+res://scenes/menu.tscn
+res://scripts/game/BaseItem.gd
+res://scripts/game/items/CheesePizza.gd

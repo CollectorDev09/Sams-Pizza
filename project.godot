@@ -25,7 +25,7 @@ SaveLoad="*uid://cnpcqf7p47c0i"
 window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/stretch/aspect="expand"
 
 [physics]
 
