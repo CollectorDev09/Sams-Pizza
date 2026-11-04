@@ -30,7 +30,7 @@ var customerWants
 
 var randomNum
 
-var customers:int = random.randi() % 20
+var customers:int = random.randf_range(5, 20)
 var totalOrders = 0
 var correctOrders = 0
 
@@ -44,6 +44,7 @@ func _ready() -> void:
 	updateText()
 
 var lastAnim = ""
+var lastOrder = ""
 
 func newCustomer():
 	var anims = ["Jonathan", "Macy", "Star"]
@@ -62,9 +63,14 @@ func newCustomer():
 	total = 0
 	
 	randomNum = random.randi() % 2
+	
 	customerWants = random.randi() % items.size()
+	
 	print(randomNum)
 	print(keys[customerWants])
+	
+	lastOrder = keys[customerWants]
+	
 	requestArray.append(keys[customerWants])
 	requestArray.pop_front()
 	print("\n")
