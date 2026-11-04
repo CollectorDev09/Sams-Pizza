@@ -1,6 +1,7 @@
 extends Node2D
 @onready var scoreLabel: Label = $ScoreLabel
 @onready var accuracyLabel: Label = $AccuracyLabel
+@onready var orderslabel: Label = $OrdersLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,6 +9,7 @@ func _ready() -> void:
 	SaveLoad._load()
 	scoreLabel.text = "Points: %d" % SaveLoad.SaveFileData.points
 	accuracyLabel.text = "Accuracy: %.2f%%" % SaveLoad.SaveFileData.accuracy
+	orderslabel.text = "Total Orders: %d" % SaveLoad.SaveFileData.totalOrders
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

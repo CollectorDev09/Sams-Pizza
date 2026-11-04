@@ -1,7 +1,7 @@
 extends Node2D
 @onready var itemLabel: Label = $MainHUD/Items
 @onready var total_text: Label = $MainHUD/TotalText
-@onready var scoreText: Label = $MainHUD/ScoreText
+@onready var scoreText: Label = $StatsHUD/ScoreText
 @onready var requestText: Label = $MainHUD/RequestText
 @onready var customersText: Label = $MainHUD/CustomersText
 @onready var statsHUD: CanvasLayer = $StatsHUD
@@ -39,6 +39,7 @@ func _ready() -> void:
 	
 	statsHUD.hide()
 	newCustomer()
+	updateText()
 
 func newCustomer():
 	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
@@ -56,7 +57,8 @@ func newCustomer():
 	requestArray.append(keys[customerWants])
 	requestArray.pop_front()
 	print("\n")
-	
+
+func updateText():
 	if (randomNum == 1 and not keys[customerWants] == "Soda"):
 		requestText.text = "Customer wants a %s and a Soda." % keys[customerWants]
 		requestArray.append("Soda")
@@ -65,13 +67,15 @@ func newCustomer():
 		requestText.text = "Customer wants a %s" % keys[customerWants]
 		# itemLabel.text = keys[customerWants]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	itemLabel.text = arrayItems(itemArray)
-	
 	total_text.text = "Total: $%.2f" % total
 	scoreText.text = "Score: %d" % points
+	
 	customersText.text = "Customers: %d" % customers
+	itemLabel.text = arrayItems(itemArray)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
 
 
 func arrayItems(array: Array) -> String:
@@ -97,10 +101,21 @@ func round_to_dec(num,digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
 
 func addItem(name:String):
+	if (itemArray.size() == 10): return
+	
 	itemArray.append(name)
 	if itemArray[0] == "":
 		itemArray.pop_front()
 	total = createTotal(itemArray)
+	updateText()
+	
+	itemLabel.text = arrayItems(itemArray)
+
+func clearItems():
+	itemArray = [""]
+	itemLabel.text = arrayItems(itemArray)
+	total = 0
+	total_text.text = "Total: $%.2f" % total
 
 func addSoda() -> void:
 	addItem("Soda")
@@ -113,7 +128,9 @@ func addCheese() -> void:
 
 func removeItem() -> void:
 	itemArray.pop_back()
+	print(itemArray)
 	total = createTotal(itemArray)
+	updateText()
 
 
 func finish() -> void:
@@ -139,14 +156,18 @@ func finish() -> void:
 	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
 	accuracyText.text = "Accuracy: %.2f%%" % Stats.orderAccuracy
 	print(accuracyText.text)
+	
+	customers -= 1
+	updateText()
+	clearItems()
 		
 	if (customers > 0):
-		customers -= 1
 		newCustomer()
 	else:
 		print("Good Job! You're done!")
 		SaveLoad.SaveFileData.points = points
 		SaveLoad.SaveFileData.accArray.append(Stats.orderAccuracy)
 		SaveLoad.resetAccuracy()
+		SaveLoad.SaveFileData.totalOrders += totalOrders
 		SaveLoad._save()
 		statsHUD.show()

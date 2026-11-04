@@ -51,6 +51,14 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Accuracy: 69%"
 
+[node name="ScoreText" type="Label" parent="StatsHUD" unique_id=1851163922]
+offset_left = 16.0
+offset_top = 232.0
+offset_right = 110.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+
 [node name="MainMenuButton" type="Button" parent="StatsHUD" unique_id=797000648]
 offset_left = 336.0
 offset_top = 376.0
@@ -123,14 +131,6 @@ offset_right = 110.0
 offset_bottom = 543.0
 theme_override_font_sizes/font_size = 32
 text = "Customers:"
-
-[node name="ScoreText" type="Label" parent="MainHUD" unique_id=1851163922]
-offset_left = 16.0
-offset_top = 456.0
-offset_right = 110.0
-offset_bottom = 501.0
-theme_override_font_sizes/font_size = 32
-text = "Score:"
 
 [node name="TotalText" type="Label" parent="MainHUD" unique_id=1669967727]
 offset_left = 16.0
