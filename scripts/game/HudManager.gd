@@ -16,7 +16,7 @@ func updateText():
 
 func updateOrderText(total: float):
 	# total_text.text = "Total: $%.2f" % total
-	total_text.text = "Total: $%.2f" % total
+	pass
 
 func hideHUD():
 	statsHUD.hide()

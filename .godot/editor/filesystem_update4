@@ -1,3 +1,4 @@
+res://scripts/main.gd
 res://scenes/game.tscn
 res://scripts/game/HudManager.gd
-res://scenes/game/HUD/Main.tscn
+res://scripts/game/hud/itemsLabel.gd

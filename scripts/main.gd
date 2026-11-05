@@ -2,6 +2,7 @@ class_name Main extends Node2D
 
 @onready var character: AnimatedSprite2D = $BG/Customer
 @onready var chatItem: AnimatedSprite2D = $BG/ChatItem
+@onready var totalText: Label = get_node("MainHUD/TotalText")
 
 var total = 0.00
 var points:int = 0
@@ -11,7 +12,7 @@ var cheesePizza = CheesePizza.new()
 var pepperoniPizza = PepperoniPizza.new()
 var soda = Soda.new()
 
-var menu = [cheesePizza, pepperoniPizza, soda]
+var menu: Array[BaseItem] = [cheesePizza, pepperoniPizza, soda]
 
 var itemArray = [""]
 var requestArray = [""]
@@ -90,17 +91,29 @@ func arrayItems(array: Array) -> String:
 	return string
 
 func createTotal(array: Array) -> float:
-	print(array)
+	print("All the items: %s" % str(array))
 	var price = 0
 	var add = 0
 	
 	for i in array.size():
-		if array[i] in menu:
-			add = menu[i].price
-			
-		price += add
+		var itemPrice: float = getItemPrice(array[i])
+		if itemPrice == 0:
+			print("NOOOO")
+		else:
+			print("YAYY")
+		
 	
 	return round_to_dec(price,2)
+
+func getItemPrice(daItemName: String) -> float:
+	var prices: Array[float] = []
+	
+	var validItemPrice: float = 0
+	
+	for item in menu:
+		prices.append(item.itemPrice)
+	
+	return validItemPrice
 
 func round_to_dec(num,digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
@@ -112,7 +125,8 @@ func addItem(itemName:String):
 	if itemArray[0] == "":
 		itemArray.pop_front()
 	total = createTotal(itemArray)
-	updateText()
+	
+	totalText.text = "Total: $%.2f" % total
 	
 	# itemLabel.text = arrayItems(itemArray)
 
@@ -121,15 +135,6 @@ func clearItems():
 	# itemLabel.text = arrayItems(itemArray)
 	total = 0
 	hudManager.updateOrderText(total)
-
-func addSoda() -> void:
-	addItem("Soda")
-
-func addPepperoni() -> void:
-	addItem("Pepperoni Pizza")
-
-func addCheese() -> void:
-	addItem("Cheese Pizza")
 
 func removeItem() -> void:
 	itemArray.pop_back()

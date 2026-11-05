@@ -15,6 +15,7 @@
 [ext_resource type="StyleBox" uid="uid://dowuwtmrye1m5" path="res://styles/buttons/itemHover.tres" id="15_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://cgshqgawvfym1" path="res://images/game/items/Cheese.png" id="16_js0lu"]
 [ext_resource type="Texture2D" uid="uid://mfn4hjbjoa8a" path="res://images/game/items/Pepperoni.png" id="17_gxtfn"]
+[ext_resource type="Script" uid="uid://syrdmdu0x6ah" path="res://scripts/game/hud/itemsLabel.gd" id="18_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://ukj0n2lbjdxx" path="res://images/game/items/GoldSoda.png" id="18_twgab"]
 [ext_resource type="Texture2D" uid="uid://2fjrhmf8eshr" path="res://images/game/OrderPaper.png" id="19_02fa5"]
 
@@ -246,6 +247,7 @@ offset_top = 439.5
 offset_right = 247.5
 offset_bottom = 543.5
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+script = ExtResource("18_ssvqc")
 
 [node name="TotalText" type="Label" parent="MainHUD" unique_id=1972074220]
 offset_left = 55.5
@@ -258,3 +260,7 @@ text = "Total:"
 
 [connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
 [connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]
+[connection signal="pressed" from="MainHUD/CheesePizzaButton" to="." method="addItem" binds= ["Cheese Pizza"]]
+[connection signal="pressed" from="MainHUD/PepperoniPizzaButton" to="." method="addItem" binds= ["Pepperoni Pizza"]]
+[connection signal="pressed" from="MainHUD/SodaButton" to="." method="addItem" binds= ["Soda"]]
+[connection signal="pressed" from="MainHUD/RemoveButton" to="." method="removeItem"]
