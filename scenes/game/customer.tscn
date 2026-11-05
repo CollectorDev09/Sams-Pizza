@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://34qho0jjl14w"]
+
+[ext_resource type="Texture2D" uid="uid://bya72yyly668f" path="res://images/game/characters/Jonathan.png" id="1_xnvoa"]
+[ext_resource type="Texture2D" uid="uid://btxa4nxsrh30y" path="res://images/game/characters/Macy.png" id="2_23hsc"]
+[ext_resource type="Texture2D" uid="uid://cncr4xv1mqdwh" path="res://images/game/characters/Star.png" id="3_rk0yi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbj1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xnvoa")
+}],
+"loop": true,
+"name": &"Jonathan",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_23hsc")
+}],
+"loop": true,
+"name": &"Macy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rk0yi")
+}],
+"loop": true,
+"name": &"Star",
+"speed": 5.0
+}]
+
+[node name="Customer" type="AnimatedSprite2D" unique_id=1781323985]
+sprite_frames = SubResource("SpriteFrames_jbj1t")
+animation = &"Macy"
