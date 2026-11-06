@@ -21,6 +21,8 @@ func initCustomer(menu: Array[BaseItem]):
 	else:
 		print("Adding to Previous Names Array")
 		previousNames.append(customerName)
+		
+		print("Previous Names: %s" % str(previousNames))
 	
 	customerMenu = menu
 	customerName = customerNames[rng.randf_range(0, customerNames.size())]

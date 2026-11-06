@@ -1,5 +1,6 @@
 res://scenes/game.tscn
-res://scripts/main.gd
-res://scripts/game/items/CheesePizza.gd
 res://scripts/game/BaseItem.gd
+res://scripts/main.gd
+res://scripts/game/hud.gd
 res://scripts/game/Customer.gd
+res://scripts/menu/playButton.gd

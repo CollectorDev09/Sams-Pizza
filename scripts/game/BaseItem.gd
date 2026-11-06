@@ -11,9 +11,3 @@ func setName(daName: String):
 
 func setPrice(price: float):
 	itemPrice = price
-
-func getName() -> String:
-	return itemName
-	
-func getPrice() -> float:
-	return itemPrice

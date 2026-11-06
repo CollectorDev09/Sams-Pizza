@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://gskilcafc1xy" path="res://images/game/ChatBubble.png" id="8_bhx41"]
 [ext_resource type="Texture2D" uid="uid://d08e7edv0nqt5" path="res://images/game/ChatItems.png" id="9_qnb83"]
 [ext_resource type="Script" uid="uid://dyiukkuljwp6j" path="res://scripts/stats.gd" id="10_sww3w"]
+[ext_resource type="Script" uid="uid://n81r6qnvlf54" path="res://scripts/game/hud.gd" id="11_264po"]
 [ext_resource type="Script" uid="uid://dpgg36xgox5uj" path="res://scripts/GotoMainMenu.gd" id="11_suyxu"]
 [ext_resource type="Script" uid="uid://cse2so7kcpbet" path="res://scripts/playAgain.gd" id="12_sgl2t"]
 [ext_resource type="StyleBox" uid="uid://dom7cclwgceme" path="res://styles/buttons/item.tres" id="13_qouja"]
@@ -166,6 +167,7 @@ text = "Play Again"
 script = ExtResource("12_sgl2t")
 
 [node name="MainHUD" type="CanvasLayer" parent="." unique_id=610136123]
+script = ExtResource("11_264po")
 
 [node name="CheesePizzaButton" type="Button" parent="MainHUD" unique_id=153302736]
 offset_left = 280.0
@@ -264,3 +266,4 @@ text = "Total:"
 [connection signal="pressed" from="MainHUD/PepperoniPizzaButton" to="." method="addItem" binds= ["pepperoniPizza"]]
 [connection signal="pressed" from="MainHUD/SodaButton" to="." method="addItem" binds= ["soda"]]
 [connection signal="pressed" from="MainHUD/RemoveButton" to="." method="removeItem"]
+[connection signal="pressed" from="MainHUD/FinishButton" to="." method="finish"]
