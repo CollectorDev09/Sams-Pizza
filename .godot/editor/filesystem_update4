@@ -1,4 +1,5 @@
-res://scripts/main.gd
 res://scenes/game.tscn
-res://scripts/game/HudManager.gd
-res://scripts/game/hud/itemsLabel.gd
+res://scripts/main.gd
+res://scripts/game/items/CheesePizza.gd
+res://scripts/game/BaseItem.gd
+res://scripts/game/Customer.gd

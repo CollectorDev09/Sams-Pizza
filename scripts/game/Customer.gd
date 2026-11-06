@@ -3,11 +3,11 @@ class_name Customer extends Node
 var rng = RandomNumberGenerator.new()
 
 var customerMenu = []
-var order = Array([], TYPE_OBJECT, "Node", BaseItem)
+var order: Array[BaseItem]
 var orderID: String
 
 var customerNames = ["Jonathan", "Macy", "Star"]
-var customerName
+var customerName: String
 
 var previousNames: Array[String] = []
 
@@ -15,7 +15,7 @@ var previousNames: Array[String] = []
 func _ready() -> void:
 	pass
 
-func initCustomer(menu: Array):
+func initCustomer(menu: Array[BaseItem]):
 	if (customerName == null):
 		print("Name is Null")
 	else:

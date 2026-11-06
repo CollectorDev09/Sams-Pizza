@@ -8,18 +8,18 @@ var total = 0.00
 var points:int = 0
 
 # Items that will be on the menu
-var cheesePizza = CheesePizza.new()
-var pepperoniPizza = PepperoniPizza.new()
-var soda = Soda.new()
+var cheesePizza = BaseItem.new()
+var pepperoniPizza = BaseItem.new()
+var soda = BaseItem.new()
 
 var menu: Array[BaseItem] = [cheesePizza, pepperoniPizza, soda]
 
-var itemArray = [""]
+var itemArray: Array[BaseItem]
 var requestArray = [""]
 
 var random = RandomNumberGenerator.new()
 
-var currentCustomer: Customer = Customer.new()
+var currentCustomer: Customer
 var customerWants
 
 var randomNum
@@ -34,10 +34,20 @@ var correctOrders = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
-	currentCustomer.initCustomer(menu)
 	print(cheesePizza.name)
 	SaveLoad._load()
 	points = SaveLoad.SaveFileData.points
+	
+	currentCustomer = Customer.new()
+	currentCustomer.initCustomer(menu)
+	
+	cheesePizza.setPrice(8)
+	pepperoniPizza.setPrice(8.50)
+	soda.setPrice(2.50)
+	
+	cheesePizza.setName("Cheese Pizza")
+	pepperoniPizza.setName("Pepperoni Pizza")
+	soda.setName("Soda")
 	
 	newCustomer()
 	updateText()
@@ -46,8 +56,8 @@ var lastAnim = ""
 var lastOrder = ""
 
 func newCustomer():
-	itemArray = [""]
-	requestArray = [""]
+	itemArray.clear()
+	requestArray.clear()
 	total = 0
 	
 	randomNum = random.randi() % 2
@@ -82,65 +92,41 @@ func updateText():
 	#customersText.text = "Customers Left: %d" % customers
 	#itemLabel.text = arrayItems(itemArray)
 
-
-func arrayItems(array: Array) -> String:
-	var string = ""
-	for item in array:
-		string += "%s\n" % item
-	
-	return string
-
-func createTotal(array: Array) -> float:
-	print("All the items: %s" % str(array))
-	var price = 0
-	var add = 0
-	
-	for i in array.size():
-		var itemPrice: float = getItemPrice(array[i])
-		if itemPrice == 0:
-			print("NOOOO")
-		else:
-			print("YAYY")
-		
-	
-	return round_to_dec(price,2)
-
-func getItemPrice(daItemName: String) -> float:
-	var prices: Array[float] = []
-	
-	var validItemPrice: float = 0
-	
-	for item in menu:
-		prices.append(item.itemPrice)
-	
-	return validItemPrice
-
 func round_to_dec(num,digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
 
 func addItem(itemName:String):
 	if (itemArray.size() == 3): return
 	
-	itemArray.append(itemName)
-	if itemArray[0] == "":
-		itemArray.pop_front()
-	total = createTotal(itemArray)
+	print(itemName)
+	
+	var daItem: BaseItem
+	daItem = get(itemName)
+	
+	itemArray.append(daItem)
+	
+	total += daItem.itemPrice
 	
 	totalText.text = "Total: $%.2f" % total
 	
 	# itemLabel.text = arrayItems(itemArray)
 
 func clearItems():
-	itemArray = [""]
+	itemArray.clear()
 	# itemLabel.text = arrayItems(itemArray)
 	total = 0
-	hudManager.updateOrderText(total)
+	totalText.text = "Total: $%.2f" % total
 
 func removeItem() -> void:
+	if itemArray.size() == 0:
+		print("Too Small")
+		return
+	
+	total -= itemArray.back().itemPrice
+	
 	itemArray.pop_back()
-	print(itemArray)
-	total = createTotal(itemArray)
-	updateText()
+	
+	totalText.text = "Total: $%.2f" % total
 
 
 func finish() -> void:

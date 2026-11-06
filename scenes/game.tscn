@@ -260,7 +260,7 @@ text = "Total:"
 
 [connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
 [connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]
-[connection signal="pressed" from="MainHUD/CheesePizzaButton" to="." method="addItem" binds= ["Cheese Pizza"]]
-[connection signal="pressed" from="MainHUD/PepperoniPizzaButton" to="." method="addItem" binds= ["Pepperoni Pizza"]]
-[connection signal="pressed" from="MainHUD/SodaButton" to="." method="addItem" binds= ["Soda"]]
+[connection signal="pressed" from="MainHUD/CheesePizzaButton" to="." method="addItem" binds= ["cheesePizza"]]
+[connection signal="pressed" from="MainHUD/PepperoniPizzaButton" to="." method="addItem" binds= ["pepperoniPizza"]]
+[connection signal="pressed" from="MainHUD/SodaButton" to="." method="addItem" binds= ["soda"]]
 [connection signal="pressed" from="MainHUD/RemoveButton" to="." method="removeItem"]
