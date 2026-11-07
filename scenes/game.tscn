@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://syrdmdu0x6ah" path="res://scripts/game/hud/itemsLabel.gd" id="18_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://ukj0n2lbjdxx" path="res://images/game/items/GoldSoda.png" id="18_twgab"]
 [ext_resource type="Texture2D" uid="uid://2fjrhmf8eshr" path="res://images/game/OrderPaper.png" id="19_02fa5"]
+[ext_resource type="AudioStream" uid="uid://clln0h12wjdjk" path="res://sounds/KeyPress.wav" id="20_1kice"]
+[ext_resource type="AudioStream" uid="uid://bjc0peellky3u" path="res://sounds/KewRelease.wav" id="21_5newe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
 atlas = ExtResource("9_qnb83")
@@ -209,6 +211,13 @@ offset_right = 440.0
 offset_bottom = 484.0
 text = "Remove Item"
 
+[node name="FinishButton" type="Button" parent="MainHUD" unique_id=147426537]
+offset_left = 456.0
+offset_top = 432.0
+offset_right = 608.0
+offset_bottom = 484.0
+text = "Finish"
+
 [node name="CustomersText" type="Label" parent="MainHUD" unique_id=422278126]
 offset_left = 16.0
 offset_top = 16.0
@@ -232,13 +241,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="FinishButton" type="Button" parent="MainHUD" unique_id=147426537]
-offset_left = 456.0
-offset_top = 432.0
-offset_right = 608.0
-offset_bottom = 484.0
-text = "Finish"
-
 [node name="Paper" type="Sprite2D" parent="MainHUD" unique_id=650498698]
 position = Vector2(159.5, 503.5)
 texture = ExtResource("19_02fa5")
@@ -260,10 +262,26 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Total:"
 
+[node name="KeyPressSFX" type="AudioStreamPlayer" parent="." unique_id=1198778432]
+stream = ExtResource("20_1kice")
+
+[node name="KeyReleaseSFX" type="AudioStreamPlayer" parent="." unique_id=298448334]
+stream = ExtResource("21_5newe")
+
 [connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
 [connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]
+[connection signal="button_down" from="MainHUD/CheesePizzaButton" to="MainHUD" method="press"]
+[connection signal="button_up" from="MainHUD/CheesePizzaButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/CheesePizzaButton" to="." method="addItem" binds= ["cheesePizza"]]
+[connection signal="button_down" from="MainHUD/PepperoniPizzaButton" to="MainHUD" method="press"]
+[connection signal="button_up" from="MainHUD/PepperoniPizzaButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/PepperoniPizzaButton" to="." method="addItem" binds= ["pepperoniPizza"]]
+[connection signal="button_down" from="MainHUD/SodaButton" to="MainHUD" method="press"]
+[connection signal="button_up" from="MainHUD/SodaButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/SodaButton" to="." method="addItem" binds= ["soda"]]
+[connection signal="button_down" from="MainHUD/RemoveButton" to="MainHUD" method="press"]
+[connection signal="button_up" from="MainHUD/RemoveButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/RemoveButton" to="." method="removeItem"]
+[connection signal="button_down" from="MainHUD/FinishButton" to="MainHUD" method="press"]
+[connection signal="button_up" from="MainHUD/FinishButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/FinishButton" to="." method="finish"]

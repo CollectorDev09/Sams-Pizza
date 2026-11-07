@@ -1,9 +1,10 @@
 class_name Main extends Node2D
 
-@onready var character: AnimatedSprite2D = $BG/Customer
+@onready var customerSprite: AnimatedSprite2D = $BG/Customer
 @onready var chatItem: AnimatedSprite2D = $BG/ChatItem
 @onready var totalText: Label = get_node("MainHUD/TotalText")
 @onready var HUD: CanvasLayer = $MainHUD
+@onready var customersLeft: Label = $MainHUD/CustomersText
 
 var total = 0.00
 var points:int = 0
@@ -36,7 +37,7 @@ func _ready() -> void:
 	points = SaveLoad.SaveFileData.points
 	
 	currentCustomer = Customer.new()
-	currentCustomer.initCustomer(menu)
+	customersLeft.text = "Customers Left: %d" % totalCustomers
 	
 	cheesePizza.setPrice(8)
 	pepperoniPizza.setPrice(8.50)
@@ -52,6 +53,9 @@ func newCustomer():
 	itemArray.clear()
 	requestArray.clear()
 	total = 0
+	
+	currentCustomer.initCustomer(menu)
+	customerSprite.play(currentCustomer.customerName)
 	
 	randomNum = random.randi() % 2
 	
@@ -95,7 +99,6 @@ func finish() -> void:
 		print("WHY ARE THERE NO ITEMS. TRY AGAIN")
 		return
 	
-	print("aasd")
 	var arraysAreSame:bool = true
 	
 	for item in requestArray:
@@ -111,6 +114,7 @@ func finish() -> void:
 	totalOrders += 1
 	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
 	totalCustomers -= 1
+	customersLeft.text = "Customers Left: %d" % totalCustomers
 	clearItems()
 		
 	if (totalCustomers > 0):

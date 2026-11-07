@@ -7,25 +7,28 @@ var order: Array[BaseItem]
 var orderID: String
 
 var customerNames = ["Jonathan", "Macy", "Star"]
-var customerName: String
+var customerName: String = ""
 
-var previousNames: Array[String] = []
+var previousName: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func initCustomer(menu: Array[BaseItem]):
-	if (customerName == null):
+	if (customerName == ""):
 		print("Name is Null")
 	else:
 		print("Adding to Previous Names Array")
-		previousNames.append(customerName)
-		
-		print("Previous Names: %s" % str(previousNames))
+		previousName = customerName
 	
 	customerMenu = menu
 	customerName = customerNames[rng.randf_range(0, customerNames.size())]
+	
+	while customerName == previousName:
+		customerName = customerNames[rng.randf_range(0, customerNames.size())]
+	
+	print("Name is %s" % customerName)
 
 func newOrder():
 	order = customerMenu[rng.randf_range(0, customerMenu.size())]
