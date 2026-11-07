@@ -3,8 +3,10 @@ class_name Customer extends Node
 var rng = RandomNumberGenerator.new()
 
 var customerMenu = []
-var order: Array[BaseItem]
-var orderID: String
+var order: Array[BaseItem] = []
+var orderID: String = ""
+var lastOrder: String
+var randomOrderNumber: int
 
 var customerNames = ["Jonathan", "Macy", "Star"]
 var customerName: String = ""
@@ -22,13 +24,31 @@ func initCustomer(menu: Array[BaseItem]):
 		print("Adding to Previous Names Array")
 		previousName = customerName
 	
+	if not orderID == "":
+		lastOrder = orderID
+	
 	customerMenu = menu
 	customerName = customerNames[rng.randf_range(0, customerNames.size())]
 	
 	while customerName == previousName:
 		customerName = customerNames[rng.randf_range(0, customerNames.size())]
 	
-	print("Name is %s" % customerName)
+	while orderID == lastOrder:
+		newOrder()
+	
+	print("ID: %s" % orderID)
 
 func newOrder():
-	order = customerMenu[rng.randf_range(0, customerMenu.size())]
+	@warning_ignore("narrowing_conversion")
+	randomOrderNumber = rng.randf_range(0, 100)
+	
+	orderID = ""
+	
+	if randomOrderNumber % 4 == 3:
+		orderID = str(int(rng.randf_range(0, 1)))
+		order.append(customerMenu[int(orderID)])
+		orderID += "2"
+		order.append(customerMenu[2])
+	else:
+		orderID = str(randomOrderNumber % 4)
+		order.append(customerMenu[int(orderID)])

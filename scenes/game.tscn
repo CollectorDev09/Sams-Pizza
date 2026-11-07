@@ -22,46 +22,50 @@
 [ext_resource type="AudioStream" uid="uid://clln0h12wjdjk" path="res://sounds/KeyPress.wav" id="20_1kice"]
 [ext_resource type="AudioStream" uid="uid://bjc0peellky3u" path="res://sounds/KewRelease.wav" id="21_5newe"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5newe"]
 atlas = ExtResource("9_qnb83")
-region = Rect2(0, 55, 71, 55)
+region = Rect2(142, 0, 71, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_37s47"]
 atlas = ExtResource("9_qnb83")
 region = Rect2(0, 0, 71, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt5mj"]
 atlas = ExtResource("9_qnb83")
-region = Rect2(71, 55, 71, 55)
+region = Rect2(0, 55, 71, 55)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pm3ni"]
 atlas = ExtResource("9_qnb83")
 region = Rect2(71, 0, 71, 55)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1j6l"]
+atlas = ExtResource("9_qnb83")
+region = Rect2(71, 55, 71, 55)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_y6deb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gqmmt")
+"texture": SubResource("AtlasTexture_5newe")
 }],
 "loop": true,
-"name": &"Cheese",
+"name": &"0",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yc10j")
+"texture": SubResource("AtlasTexture_37s47")
 }],
 "loop": true,
-"name": &"CheeseSoda",
+"name": &"02",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jscy8")
+"texture": SubResource("AtlasTexture_bt5mj")
 }],
 "loop": true,
-"name": &"Pepper",
+"name": &"1",
 "speed": 5.0
 }, {
 "frames": [{
@@ -69,7 +73,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_pm3ni")
 }],
 "loop": true,
-"name": &"PepperSoda",
+"name": &"12",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1j6l")
+}],
+"loop": true,
+"name": &"2",
 "speed": 5.0
 }]
 
@@ -104,7 +116,7 @@ texture = ExtResource("8_bhx41")
 position = Vector2(619.1875, 168.31252)
 scale = Vector2(1.6672534, 1.7340906)
 sprite_frames = SubResource("SpriteFrames_y6deb")
-animation = &"PepperSoda"
+animation = &"2"
 
 [node name="StatsHUD" type="CanvasLayer" parent="." unique_id=828023848]
 visible = false

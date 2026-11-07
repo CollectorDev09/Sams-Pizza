@@ -56,6 +56,7 @@ func newCustomer():
 	
 	currentCustomer.initCustomer(menu)
 	customerSprite.play(currentCustomer.customerName)
+	chatItem.play(currentCustomer.orderID)
 	
 	randomNum = random.randi() % 2
 	
