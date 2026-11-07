@@ -110,12 +110,15 @@ func finish() -> void:
 		if !itemArray.has(item) and arraysAreSame:
 			arraysAreSame = false
 	
+	if not itemArray.size() == currentCustomer.order.size():
+		arraysAreSame = false
+	
 	if (arraysAreSame):
 		correctOrders += 1
-		points += 400 * requestArray.size()
+		points += 400 * itemArray.size()
 		print("You got it right")
 	else:
-		points -= 400 * requestArray.size()
+		points -= 400 * itemArray.size()
 		print("You got it wrong")
 	
 	totalOrders += 1
