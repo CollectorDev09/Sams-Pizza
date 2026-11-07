@@ -8,6 +8,7 @@ class_name Main extends Node2D
 
 var total = 0.00
 var points:int = 0
+var orderAccuracy: float
 
 # Items that will be on the menu
 var cheesePizza = BaseItem.new()
@@ -31,7 +32,7 @@ var correctOrders = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
+	Stats.getAccuracy(float(correctOrders), float(totalOrders))
 	print(cheesePizza.name)
 	SaveLoad._load()
 	points = SaveLoad.SaveFileData.points
@@ -102,27 +103,33 @@ func finish() -> void:
 	
 	var arraysAreSame:bool = true
 	
-	for item in requestArray:
+	print(currentCustomer.order)
+	print(itemArray)
+	
+	for item in currentCustomer.order:
 		if !itemArray.has(item) and arraysAreSame:
 			arraysAreSame = false
 	
 	if (arraysAreSame):
 		correctOrders += 1
 		points += 400 * requestArray.size()
+		print("You got it right")
 	else:
 		points -= 400 * requestArray.size()
+		print("You got it wrong")
 	
 	totalOrders += 1
-	Stats.orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
+	orderAccuracy = Stats.getAccuracy(float(correctOrders), float(totalOrders))
+	
 	totalCustomers -= 1
 	customersLeft.text = "Customers Left: %d" % totalCustomers
-	clearItems()
+	
+	itemArray.clear()
+	HUD.updateItemsText(itemArray)
+	total = 0
+	totalText.text = "Total: $%.2f" % total
 		
 	if (totalCustomers > 0):
 		newCustomer()
 	else:
-		SaveLoad.SaveFileData.points = points
-		SaveLoad.SaveFileData.accArray.append(Stats.orderAccuracy)
-		SaveLoad.resetAccuracy()
-		SaveLoad.SaveFileData.totalOrders += totalOrders
-		SaveLoad._save()
+		$StatsHUD.complete(points, totalOrders, orderAccuracy)

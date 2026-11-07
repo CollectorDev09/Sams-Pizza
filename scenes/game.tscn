@@ -118,68 +118,6 @@ scale = Vector2(1.6672534, 1.7340906)
 sprite_frames = SubResource("SpriteFrames_y6deb")
 animation = &"2"
 
-[node name="StatsHUD" type="CanvasLayer" parent="." unique_id=828023848]
-visible = false
-script = ExtResource("10_sww3w")
-
-[node name="BG" type="ColorRect" parent="StatsHUD" unique_id=876052792]
-offset_left = -320.0
-offset_top = -200.0
-offset_right = 1272.0
-offset_bottom = 832.0
-color = Color(0.20511726, 0.2051175, 0.20511737, 0.44313726)
-
-[node name="BigText" type="Label" parent="StatsHUD" unique_id=1496070779]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -122.5
-offset_top = 16.0
-offset_right = 122.5
-offset_bottom = 85.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.42000002, 1, 0.48766673, 1)
-theme_override_font_sizes/font_size = 50
-text = "Good Job!!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AccuracyText" type="Label" parent="StatsHUD" unique_id=1834663232]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -421.0
-offset_right = 236.0
-offset_bottom = -376.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "Accuracy: 69%"
-
-[node name="ScoreText" type="Label" parent="StatsHUD" unique_id=1851163922]
-offset_left = 16.0
-offset_top = 232.0
-offset_right = 110.0
-offset_bottom = 277.0
-theme_override_font_sizes/font_size = 32
-text = "Score:"
-
-[node name="MainMenuButton" type="Button" parent="StatsHUD" unique_id=797000648]
-offset_left = 336.0
-offset_top = 376.0
-offset_right = 496.0
-offset_bottom = 416.0
-text = "Go to Main Menu"
-script = ExtResource("11_suyxu")
-
-[node name="PlayAgainButton" type="Button" parent="StatsHUD" unique_id=904171082]
-offset_left = 336.0
-offset_top = 328.0
-offset_right = 496.0
-offset_bottom = 368.0
-text = "Play Again"
-script = ExtResource("12_sgl2t")
-
 [node name="MainHUD" type="CanvasLayer" parent="." unique_id=610136123]
 script = ExtResource("11_264po")
 
@@ -274,14 +212,74 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Total:"
 
+[node name="StatsHUD" type="CanvasLayer" parent="." unique_id=828023848]
+visible = false
+script = ExtResource("10_sww3w")
+
+[node name="BG" type="ColorRect" parent="StatsHUD" unique_id=876052792]
+offset_left = -320.0
+offset_top = -200.0
+offset_right = 1272.0
+offset_bottom = 832.0
+color = Color(0.20511726, 0.2051175, 0.20511737, 0.44313726)
+
+[node name="BigText" type="Label" parent="StatsHUD" unique_id=1496070779]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.5
+offset_top = 16.0
+offset_right = 122.5
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.42000002, 1, 0.48766673, 1)
+theme_override_font_sizes/font_size = 50
+text = "Good Job!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccuracyText" type="Label" parent="StatsHUD" unique_id=1834663232]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -421.0
+offset_right = 236.0
+offset_bottom = -376.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Accuracy: 69%"
+
+[node name="ScoreText" type="Label" parent="StatsHUD" unique_id=1851163922]
+offset_left = 16.0
+offset_top = 232.0
+offset_right = 110.0
+offset_bottom = 277.0
+theme_override_font_sizes/font_size = 32
+text = "Score:"
+
+[node name="MainMenuButton" type="Button" parent="StatsHUD" unique_id=797000648]
+offset_left = 336.0
+offset_top = 376.0
+offset_right = 496.0
+offset_bottom = 416.0
+text = "Go to Main Menu"
+script = ExtResource("11_suyxu")
+
+[node name="PlayAgainButton" type="Button" parent="StatsHUD" unique_id=904171082]
+offset_left = 336.0
+offset_top = 328.0
+offset_right = 496.0
+offset_bottom = 368.0
+text = "Play Again"
+script = ExtResource("12_sgl2t")
+
 [node name="KeyPressSFX" type="AudioStreamPlayer" parent="." unique_id=1198778432]
 stream = ExtResource("20_1kice")
 
 [node name="KeyReleaseSFX" type="AudioStreamPlayer" parent="." unique_id=298448334]
 stream = ExtResource("21_5newe")
 
-[connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
-[connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]
 [connection signal="button_down" from="MainHUD/CheesePizzaButton" to="MainHUD" method="press"]
 [connection signal="button_up" from="MainHUD/CheesePizzaButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/CheesePizzaButton" to="." method="addItem" binds= ["cheesePizza"]]
@@ -297,3 +295,5 @@ stream = ExtResource("21_5newe")
 [connection signal="button_down" from="MainHUD/FinishButton" to="MainHUD" method="press"]
 [connection signal="button_up" from="MainHUD/FinishButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/FinishButton" to="." method="finish"]
+[connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
+[connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]

@@ -43,6 +43,7 @@ func newOrder():
 	randomOrderNumber = rng.randf_range(0, 100)
 	
 	orderID = ""
+	order.clear()
 	
 	if randomOrderNumber % 4 == 3:
 		orderID = str(int(rng.randf_range(0, 1)))

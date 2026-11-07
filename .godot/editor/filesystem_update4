@@ -2,3 +2,4 @@ res://scenes/game.tscn
 res://scripts/game/Customer.gd
 res://scenes/game/HUD/Main.tscn
 res://scripts/main.gd
+res://scripts/stats.gd
