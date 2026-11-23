@@ -8,7 +8,7 @@ var orderID: String = ""
 var lastOrder: String
 var randomOrderNumber: int
 
-var customerNames = ["Jonathan", "Macy", "Star"]
+var customerNames = ["Jonathan", "Macy", "Star", "Eden"]
 var customerName: String = ""
 
 var previousName: String = ""

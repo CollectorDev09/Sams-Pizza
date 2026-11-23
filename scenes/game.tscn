@@ -15,12 +15,18 @@
 [ext_resource type="StyleBox" uid="uid://84amqjkgurww" path="res://styles/buttons/itemPressed.tres" id="14_wljb1"]
 [ext_resource type="StyleBox" uid="uid://dowuwtmrye1m5" path="res://styles/buttons/itemHover.tres" id="15_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://cgshqgawvfym1" path="res://images/game/items/Cheese.png" id="16_js0lu"]
+[ext_resource type="Texture2D" uid="uid://bn2axu3gywwx1" path="res://images/ui/pausebutton/normal.png" id="17_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://mfn4hjbjoa8a" path="res://images/game/items/Pepperoni.png" id="17_gxtfn"]
+[ext_resource type="Texture2D" uid="uid://bi1olis80ue2f" path="res://images/ui/pausebutton/press.png" id="18_pl11u"]
 [ext_resource type="Script" uid="uid://syrdmdu0x6ah" path="res://scripts/game/hud/itemsLabel.gd" id="18_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://ukj0n2lbjdxx" path="res://images/game/items/GoldSoda.png" id="18_twgab"]
 [ext_resource type="Texture2D" uid="uid://2fjrhmf8eshr" path="res://images/game/OrderPaper.png" id="19_02fa5"]
+[ext_resource type="Texture2D" uid="uid://dglhkxp6c0qxl" path="res://images/ui/pausebutton/hover.png" id="19_bhx41"]
 [ext_resource type="AudioStream" uid="uid://clln0h12wjdjk" path="res://sounds/KeyPress.wav" id="20_1kice"]
+[ext_resource type="Texture2D" uid="uid://cuanvy0myux77" path="res://images/game/pausemenu/Paused.png" id="20_pl11u"]
+[ext_resource type="Script" uid="uid://dnai8rymcbqmo" path="res://scripts/game/PauseButton.gd" id="20_qnb83"]
 [ext_resource type="AudioStream" uid="uid://bjc0peellky3u" path="res://sounds/KewRelease.wav" id="21_5newe"]
+[ext_resource type="Script" uid="uid://j1u7qvs1k5m1" path="res://scripts/game/GotoMenu.gd" id="21_bhx41"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5newe"]
 atlas = ExtResource("9_qnb83")
@@ -48,7 +54,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5newe")
 }],
-"loop": true,
+"loop": 1,
 "name": &"0",
 "speed": 5.0
 }, {
@@ -56,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_37s47")
 }],
-"loop": true,
+"loop": 1,
 "name": &"02",
 "speed": 5.0
 }, {
@@ -64,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bt5mj")
 }],
-"loop": true,
+"loop": 1,
 "name": &"1",
 "speed": 5.0
 }, {
@@ -72,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pm3ni")
 }],
-"loop": true,
+"loop": 1,
 "name": &"12",
 "speed": 5.0
 }, {
@@ -80,7 +86,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1j6l")
 }],
-"loop": true,
+"loop": 1,
 "name": &"2",
 "speed": 5.0
 }]
@@ -101,6 +107,7 @@ centered = false
 
 [node name="Customer" parent="BG" unique_id=1781323985 instance=ExtResource("4_rysoc")]
 position = Vector2(408, 240)
+animation = &"Jonathan"
 
 [node name="Desk" type="Sprite2D" parent="BG" unique_id=1800753090]
 position = Vector2(0, 390)
@@ -212,6 +219,45 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 23
 text = "Total:"
 
+[node name="PauseButton" type="TextureButton" parent="MainHUD" unique_id=1905623714]
+offset_left = 704.0
+offset_top = 16.0
+offset_right = 784.0
+offset_bottom = 96.0
+texture_normal = ExtResource("17_e1j6l")
+texture_pressed = ExtResource("18_pl11u")
+texture_hover = ExtResource("19_bhx41")
+script = ExtResource("20_qnb83")
+
+[node name="PauseHUD" type="CanvasLayer" parent="." unique_id=1029629612]
+visible = false
+
+[node name="BG" type="ColorRect" parent="PauseHUD" unique_id=170026441]
+offset_left = -320.0
+offset_top = -200.0
+offset_right = 1272.0
+offset_bottom = 832.0
+color = Color(0.20511726, 0.2051175, 0.20511737, 0.44313726)
+
+[node name="Paused" type="Sprite2D" parent="PauseHUD" unique_id=1810010727]
+position = Vector2(393, 70)
+texture = ExtResource("20_pl11u")
+
+[node name="GoBack" type="Button" parent="PauseHUD" unique_id=635943427]
+offset_left = 335.0
+offset_top = 303.0
+offset_right = 514.0
+offset_bottom = 351.0
+text = "Return to Menu"
+script = ExtResource("21_bhx41")
+
+[node name="Resume" type="Button" parent="PauseHUD" unique_id=2072298703]
+offset_left = 335.0
+offset_top = 238.0
+offset_right = 514.0
+offset_bottom = 286.0
+text = "Resume"
+
 [node name="StatsHUD" type="CanvasLayer" parent="." unique_id=828023848]
 visible = false
 script = ExtResource("10_sww3w")
@@ -295,5 +341,8 @@ stream = ExtResource("21_5newe")
 [connection signal="button_down" from="MainHUD/FinishButton" to="MainHUD" method="press"]
 [connection signal="button_up" from="MainHUD/FinishButton" to="MainHUD" method="release"]
 [connection signal="pressed" from="MainHUD/FinishButton" to="." method="finish"]
+[connection signal="pressed" from="MainHUD/PauseButton" to="MainHUD/PauseButton" method="pressed"]
+[connection signal="pressed" from="PauseHUD/GoBack" to="PauseHUD/GoBack" method="pressed"]
+[connection signal="pressed" from="PauseHUD/Resume" to="MainHUD/PauseButton" method="_on_resume_pressed"]
 [connection signal="pressed" from="StatsHUD/MainMenuButton" to="StatsHUD/MainMenuButton" method="_pressed"]
 [connection signal="pressed" from="StatsHUD/PlayAgainButton" to="StatsHUD/PlayAgainButton" method="_pressed"]
